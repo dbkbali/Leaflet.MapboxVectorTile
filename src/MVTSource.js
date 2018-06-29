@@ -480,8 +480,9 @@ module.exports = L.TileLayer.MVTSource = L.TileLayer.Canvas.extend({
     //Fires when all tiles from this layer have been loaded and drawn (or 404'd).
 
     //Make sure manager layer is always in front
-    this.bringToFront();
-
+    if (this._map) {
+      this.bringToFront();
+    }
     //See if there is an event to execute
     var self = this;
     var onTilesLoaded = self.options.onTilesLoaded;
