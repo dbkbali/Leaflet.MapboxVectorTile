@@ -213,7 +213,7 @@ module.exports = L.TileLayer.MVTSource = L.TileLayer.Canvas.extend({
 			if (xhr.status == "200") {
 
 				if (!xhr.response) return;
-
+        if (self.map.getZoom() == null) return;
 				var arrayBuffer = new Uint8Array(xhr.response);
 				var buf = new Protobuf(arrayBuffer);
 				var vt = new VectorTile(buf);
